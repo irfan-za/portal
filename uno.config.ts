@@ -1,49 +1,53 @@
 // uno.config.ts
 import {
-    defineConfig,
-    presetAttributify,
-    presetIcons,
-    presetTypography,
-    presetUno,
-    presetWebFonts,
-    transformerDirectives,
-    transformerVariantGroup,
-  } from "unocss";
-  
-  export default defineConfig({
-    shortcuts: [
-      [
-        "btn","shadow-md py-2 px-4 w-full rounded-xl text-2xl text-white font-extrabold disabled:cursor-default disabled:bg-gray-600 disabled:opacity-50",
-      ],
+  defineConfig,
+  presetAttributify,
+  presetIcons,
+  presetTypography,
+  presetUno,
+  presetWebFonts,
+  transformerDirectives,
+  transformerVariantGroup,
+} from "unocss";
+
+export default defineConfig({
+  shortcuts: [
+    [
+      "btn",
+      "w-full cursor-pointer rounded-lg p-4 font-medium text-white transition hover:bg-opacity-90",
     ],
-    theme: {
-      colors: {
-        clean: "#f9f9f9", // class="text-clean"
-        primary: "#2FD7DD",
-        primaryLight: "#92FBFF",
-        primaryDark: "#2CB5BA",
-        secondary: "#2CB5BA",
-        brand: "#FFFFFF",
-      },
+  ],
+  theme: {
+    colors: {
+      primary: "#377cfb",
+      secondary: "#66cc8a",
+      accent: "#ea5234",
+      neutral: "#333c4d",
+      base: "#ffffff",
+      info: "#3abff8",
+      success: "#36d399",
+      warning: "#fbbd23",
+      error: "#f87272",
+      dark: "rgb(51, 60, 77)",
     },
-    presets: [
-      presetUno(),
-      presetAttributify(),
-      presetIcons({
-        scale: 1.2,
-        extraProperties: {
-          display: "inline-block",
-          "vertical-align": "middle",
-          // ...
-        },
-      }),
-      presetTypography(),
-      presetWebFonts({
-        fonts: {
-          // ...
-        },
-      }),
-    ],
-    transformers: [transformerDirectives(), transformerVariantGroup()],
-  });
-  
+  },
+  presets: [
+    presetUno(),
+    presetAttributify(),
+    presetIcons({
+      scale: 1.2,
+      extraProperties: {
+        display: "inline-block",
+        "vertical-align": "middle",
+        // ...
+      },
+    }),
+    presetTypography(),
+    presetWebFonts({
+      fonts: {
+        // ...
+      },
+    }),
+  ],
+  transformers: [transformerDirectives(), transformerVariantGroup()],
+});
