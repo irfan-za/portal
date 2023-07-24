@@ -12,9 +12,12 @@
     "@nuxt/devtools": "latest",
     "@nuxt/image": "1.0.0-rc.1",
     "@nuxtjs/supabase": "^0.3.8",
-    "@pinia/nuxt": "^0.4.11",
     "@types/node": "^18.16.19",
     "@unocss/nuxt": "^0.53.5",
     "nuxt": "^3.6.5"
+  },
+  "dependencies": {
+    "@pinia/nuxt": "^0.4.11",
+    "pinia": "^2.1.4"
   }
 }

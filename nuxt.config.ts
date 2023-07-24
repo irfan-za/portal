@@ -6,5 +6,15 @@ export default defineNuxtConfig({
   image: {
     quality: 80,
     format: ['webp']
-  }
+  },
+  pinia: {
+    autoImports: [
+      // automatically imports `defineStore`
+      'defineStore', // import { defineStore } from 'pinia'
+      ['defineStore', 'definePiniaStore'], // import { defineStore as definePiniaStore } from 'pinia'
+    ],
+  },
+  imports: {
+    dirs: ["./stores"],
+  },
 });

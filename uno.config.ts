@@ -34,23 +34,21 @@ export default defineConfig({
       graydark: "rgb(51, 58, 72)",
     },
   },
+  safelist: ['i-solar:home-2-broken','i-solar:inbox-archive-broken','i-solar:dialog-2-broken','i-solar:users-group-two-rounded-broken','i-solar:album-broken','i-solar:settings-broken','i-solar:mailbox-broken','i-solar:shop-broken','i-solar:archive-broken','i-solar:user-broken'],
   presets: [
     presetUno(),
     presetAttributify(),
     presetIcons({
       scale: 1.2,
+      prefix: "i-",
       extraProperties: {
         display: "inline-block",
         "vertical-align": "middle",
-        // ...
       },
     }),
     presetTypography(),
-    presetWebFonts({
-      fonts: {
-        // ...
-      },
-    }),
+    presetWebFonts(),
   ],
   transformers: [transformerDirectives(), transformerVariantGroup()],
+  
 });

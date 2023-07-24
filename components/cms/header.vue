@@ -3,44 +3,44 @@
     class="sticky top-0 z-999 flex w-full bg-white drop-shadow-1 dark:bg-dark dark:drop-shadow-none"
   >
     <div
-      class="flex flex-grow items-center justify-between py-4 px-4 shadow-2 md:px-6 2xl:px-11"
+      class="flex flex-grow items-center justify-between py-4 px-4 shadow md:px-6 2xl:px-11"
     >
       <div class="flex items-center gap-2 sm:gap-4 lg:hidden">
         <!-- Hamburger Toggle BTN -->
         <button
-          class="z-99999 block rounded-sm border border-stroke bg-white p-1.5 shadow-sm dark:border-dark dark:bg-dark lg:hidden"
-          @click="sidebarToggle = !sidebarToggle"
+          class="z-99999 block rounded-sm border border-slate-300 bg-white p-1.5 shadow-sm dark:border-dark dark:bg-dark lg:hidden"
+          @click="navbar.setToggleNav(!navbar.getToggleNav)"
         >
           <span class="relative block h-5.5 w-5.5 cursor-pointer">
             <span class="du-block absolute right-0 h-full w-full">
               <span
                 class="relative top-0 left-0 my-1 block h-0.5 w-0 rounded-sm bg-black delay-[0] duration-200 ease-in-out dark:bg-white"
-                :class="{ '!w-full delay-300': !sidebarToggle }"
+                :class="{ '!w-full delay-300': !navbar.getToggleNav }"
               ></span>
               <span
                 class="relative top-0 left-0 my-1 block h-0.5 w-0 rounded-sm bg-black delay-150 duration-200 ease-in-out dark:bg-white"
-                :class="{ '!w-full delay-400': !sidebarToggle }"
+                :class="{ '!w-full delay-400': !navbar.getToggleNav }"
               ></span>
               <span
                 class="relative top-0 left-0 my-1 block h-0.5 w-0 rounded-sm bg-black delay-200 duration-200 ease-in-out dark:bg-white"
-                :class="{ '!w-full delay-500': !sidebarToggle }"
+                :class="{ '!w-full delay-500': !navbar.getToggleNav }"
               ></span>
             </span>
             <span class="du-block absolute right-0 h-full w-full rotate-45">
               <span
                 class="absolute left-2.5 top-0 block h-full w-0.5 rounded-sm bg-black delay-300 duration-200 ease-in-out dark:bg-white"
-                :class="{ '!h-0 delay-[0]': !sidebarToggle }"
+                :class="{ '!h-0 delay-[0]': !navbar.getToggleNav }"
               ></span>
               <span
                 class="delay-400 absolute left-0 top-2.5 block h-0.5 w-full rounded-sm bg-black duration-200 ease-in-out dark:bg-white"
-                :class="{ '!h-0 dealy-200': !sidebarToggle }"
+                :class="{ '!h-0 dealy-200': !navbar.getToggleNav }"
               ></span>
             </span>
           </span>
         </button>
         <!-- Hamburger Toggle BTN -->
         <a class="block flex-shrink-0 lg:hidden" href="index.html">
-          <img src="./images/logo/logo-icon.svg" alt="Logo" />
+          <nuxt-img src="/img/habitzkid.png" w-42 />
         </a>
       </div>
       <div class="hidden sm:block">
@@ -84,7 +84,7 @@
           <li>
             <!-- Dark Mode Toggler -->
             <label
-              :class="darkMode ? 'bg-primary' : 'bg-stroke'"
+              :class="darkMode ? 'bg-primary' : 'bg-slate-300'"
               class="relative m-0 block h-7.5 w-14 rounded-full"
             >
               <input
@@ -141,7 +141,7 @@
             @click="dropdownOpen = false"
           >
             <a
-              class="relative flex h-8.5 w-8.5 items-center justify-center rounded-full border-[0.5px] border-stroke bg-gray hover:text-primary dark:border-dark dark:bg-meta-4 dark:text-white"
+              class="relative flex h-8.5 w-8.5 items-center justify-center rounded-full border-[0.5px] border-slate-300 bg-gray hover:text-primary dark:border-dark dark:bg-meta-4 dark:text-white"
               href="#"
               @click.prevent="
                 dropdownOpen = !dropdownOpen;
@@ -175,7 +175,7 @@
             <!-- Dropdown Start -->
             <div
               v-show="dropdownOpen"
-              class="absolute -right-27 mt-2.5 flex h-90 w-75 flex-col rounded-sm border border-stroke bg-white shadow-default dark:border-dark dark:bg-dark sm:right-0 sm:w-80"
+              class="absolute -right-27 mt-2.5 flex h-90 w-75 flex-col rounded-sm border border-slate-300 bg-white shadow-default dark:border-dark dark:bg-dark sm:right-0 sm:w-80"
             >
               <div class="px-4.5 py-3">
                 <h5 class="text-sm font-medium text-dark">Notification</h5>
@@ -184,7 +184,7 @@
               <ul class="flex h-auto flex-col overflow-y-auto">
                 <li>
                   <a
-                    class="flex flex-col gap-2.5 border-t border-stroke px-4.5 py-3 hover:bg-gray-2 dark:border-dark dark:hover:bg-meta-4"
+                    class="flex flex-col gap-2.5 border-t border-slate-300 px-4.5 py-3 hover:bg-gray-2 dark:border-dark dark:hover:bg-meta-4"
                     href="#"
                   >
                     <p class="text-sm">
@@ -200,7 +200,7 @@
                 </li>
                 <li>
                   <a
-                    class="flex flex-col gap-2.5 border-t border-stroke px-4.5 py-3 hover:bg-gray-2 dark:border-dark dark:hover:bg-meta-4"
+                    class="flex flex-col gap-2.5 border-t border-slate-300 px-4.5 py-3 hover:bg-gray-2 dark:border-dark dark:hover:bg-meta-4"
                     href="#"
                   >
                     <p class="text-sm">
@@ -215,7 +215,7 @@
                 </li>
                 <li>
                   <a
-                    class="flex flex-col gap-2.5 border-t border-stroke px-4.5 py-3 hover:bg-gray-2 dark:border-dark dark:hover:bg-meta-4"
+                    class="flex flex-col gap-2.5 border-t border-slate-300 px-4.5 py-3 hover:bg-gray-2 dark:border-dark dark:hover:bg-meta-4"
                     href="#"
                   >
                     <p class="text-sm">
@@ -231,7 +231,7 @@
                 </li>
                 <li>
                   <a
-                    class="flex flex-col gap-2.5 border-t border-stroke px-4.5 py-3 hover:bg-gray-2 dark:border-dark dark:hover:bg-meta-4"
+                    class="flex flex-col gap-2.5 border-t border-slate-300 px-4.5 py-3 hover:bg-gray-2 dark:border-dark dark:hover:bg-meta-4"
                     href="#"
                   >
                     <p class="text-sm">
@@ -258,7 +258,7 @@
             @click="dropdownOpen = false"
           >
             <a
-              class="relative flex h-8.5 w-8.5 items-center justify-center rounded-full border-[0.5px] border-stroke bg-gray hover:text-primary dark:border-dark dark:bg-meta-4 dark:text-white"
+              class="relative flex h-8.5 w-8.5 items-center justify-center rounded-full border-[0.5px] border-slate-300 bg-gray hover:text-primary dark:border-dark dark:bg-meta-4 dark:text-white"
               href="#"
               @click.prevent="
                 dropdownOpen = !dropdownOpen;
@@ -304,7 +304,7 @@
             <!-- Dropdown Start -->
             <div
               v-show="dropdownOpen"
-              class="absolute -right-16 mt-2.5 flex h-90 w-75 flex-col rounded-sm border border-stroke bg-white shadow-default dark:border-dark dark:bg-dark sm:right-0 sm:w-80"
+              class="absolute -right-16 mt-2.5 flex h-90 w-75 flex-col rounded-sm border border-slate-300 bg-white shadow-default dark:border-dark dark:bg-dark sm:right-0 sm:w-80"
             >
               <div class="px-4.5 py-3">
                 <h5 class="text-sm font-medium text-dark">Messages</h5>
@@ -313,11 +313,11 @@
               <ul class="flex h-auto flex-col overflow-y-auto">
                 <li>
                   <a
-                    class="flex gap-4.5 border-t border-stroke px-4.5 py-3 hover:bg-gray-2 dark:border-dark dark:hover:bg-meta-4"
+                    class="flex gap-4.5 border-t border-slate-300 px-4.5 py-3 hover:bg-gray-2 dark:border-dark dark:hover:bg-meta-4"
                     href="messages.html"
                   >
                     <div class="h-12.5 w-12.5 rounded-full">
-                      <img src="./images/user/user-02.png" alt="User" />
+                      <nuxt-img src="/img/habitzkid.png" alt="User" />
                     </div>
 
                     <div>
@@ -333,11 +333,11 @@
                 </li>
                 <li>
                   <a
-                    class="flex gap-4.5 border-t border-stroke px-4.5 py-3 hover:bg-gray-2 dark:border-dark dark:hover:bg-meta-4"
+                    class="flex gap-4.5 border-t border-slate-300 px-4.5 py-3 hover:bg-gray-2 dark:border-dark dark:hover:bg-meta-4"
                     href="messages.html"
                   >
                     <div class="h-12.5 w-12.5 rounded-full">
-                      <img src="./images/user/user-01.png" alt="User" />
+                      <nuxt-img src="/img/habitzkid.png" alt="User" />
                     </div>
 
                     <div>
@@ -353,11 +353,11 @@
                 </li>
                 <li>
                   <a
-                    class="flex gap-4.5 border-t border-stroke px-4.5 py-3 hover:bg-gray-2 dark:border-dark dark:hover:bg-meta-4"
+                    class="flex gap-4.5 border-t border-slate-300 px-4.5 py-3 hover:bg-gray-2 dark:border-dark dark:hover:bg-meta-4"
                     href="messages.html"
                   >
                     <div class="h-12.5 w-12.5 rounded-full">
-                      <img src="./images/user/user-03.png" alt="User" />
+                      <nuxt-img src="/img/habitzkid.png" alt="User" />
                     </div>
 
                     <div>
@@ -373,11 +373,11 @@
                 </li>
                 <li>
                   <a
-                    class="flex gap-4.5 border-t border-stroke px-4.5 py-3 hover:bg-gray-2 dark:border-dark dark:hover:bg-meta-4"
+                    class="flex gap-4.5 border-t border-slate-300 px-4.5 py-3 hover:bg-gray-2 dark:border-dark dark:hover:bg-meta-4"
                     href="messages.html"
                   >
                     <div class="h-12.5 w-12.5 rounded-full">
-                      <img src="./images/user/user-04.png" alt="User" />
+                      <nuxt-img src="/img/habitzkid.png" alt="User" />
                     </div>
 
                     <div>
@@ -393,11 +393,11 @@
                 </li>
                 <li>
                   <a
-                    class="flex gap-4.5 border-t border-stroke px-4.5 py-3 hover:bg-gray-2 dark:border-dark dark:hover:bg-meta-4"
+                    class="flex gap-4.5 border-t border-slate-300 px-4.5 py-3 hover:bg-gray-2 dark:border-dark dark:hover:bg-meta-4"
                     href="messages.html"
                   >
                     <div class="h-12.5 w-12.5 rounded-full">
-                      <img src="./images/user/user-02.png" alt="User" />
+                      <nuxt-img src="/img/habitzkid.png" alt="User" />
                     </div>
 
                     <div>
@@ -437,7 +437,7 @@
             </span>
 
             <span class="h-12 w-12 rounded-full">
-              <img src="./images/user/user-01.png" alt="User" />
+              <nuxt-img src="/img/habitzkid.png" alt="User" />
             </span>
 
             <svg
@@ -461,10 +461,10 @@
           <!-- Dropdown Start -->
           <div
             v-show="dropdownOpen"
-            class="absolute right-0 mt-4 flex w-62.5 flex-col rounded-sm border border-stroke bg-white shadow-default dark:border-dark dark:bg-dark"
+            class="absolute right-0 mt-4 flex w-62.5 flex-col rounded-sm border border-slate-300 bg-white shadow-default dark:border-dark dark:bg-dark"
           >
             <ul
-              class="flex flex-col gap-5 border-b border-stroke px-6 py-7.5 dark:border-dark"
+              class="flex flex-col gap-5 border-b border-slate-300 px-6 py-7.5 dark:border-dark"
             >
               <li>
                 <a
@@ -574,4 +574,6 @@ const dropdownOpen = ref(false)
 const notifying = ref(false)
 const sidebarToggle = ref(false)
 const darkMode = ref(false)
+const navbar = useNavbar();
+
 </script>
