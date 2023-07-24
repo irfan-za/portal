@@ -29,6 +29,9 @@ export default defineConfig({
       warning: "#fbbd23",
       error: "#f87272",
       dark: "rgb(51, 60, 77)",
+      bodydark2: "rgb(138, 153, 175)",
+      bodydark1: "rgb(219, 224, 230)",
+      graydark: "rgb(51, 58, 72)",
     },
   },
   presets: [

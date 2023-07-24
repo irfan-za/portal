@@ -7,7 +7,7 @@
     <!-- SIDEBAR HEADER -->
     <div class="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5">
       <a href="index.html">
-        <nuxt-img src="/img/logo.png" alt="Logo" class="w-48"/>
+        <nuxt-img src="/img/habitzkid-white.png" alt="Logo" class="w-48" />
       </a>
 
       <button
@@ -641,7 +641,151 @@
 
 
 <script setup>
-const page = ref("")
-const selected = ref("")
-const sidebarToggle = ref("")
+const page = ref("");
+const selected = ref("");
+const sidebarToggle = ref("");
+const menu = ref({
+  adminMenu: [
+    {
+      id: 1,
+      name: "Dashboard",
+      url: "/cms",
+      icon: "solar:home-2-broken",
+    },
+    {
+      id: 2,
+      name: "Artikel",
+      url: "/cms/articles",
+      icon: "solar:inbox-archive-broken",
+      submenu: [
+        {
+          id: 3,
+          name: "Semua Artikel",
+          url: "/cms/articles/manage",
+        },
+        {
+          id: 4,
+          name: "Tambah Artikel",
+          url: "/cms/articles/add",
+        },
+        {
+          id: 5,
+          name: "Kategori Artikel",
+          url: "/cms/articles/categories",
+        },
+      ],
+    },
+    {
+      id: 6,
+      name: "Komentar",
+      url: "/cms/comments",
+      icon: "solar:dialog-2-broken",
+    },
+    {
+      id: 7,
+      name: "Pengguna",
+      url: "/cms/users",
+      icon: "solar:users-group-two-rounded-broken",
+      submenu: [
+        {
+          id: 8,
+          name: "Semua Pengguna",
+          url: "/cms/users/manage",
+        },
+        {
+          id: 9,
+          name: "Tambah Pengguna",
+          url: "/cms/users/add",
+        },
+        {
+          id: 10,
+          name: "Profil",
+          url: "/cms/users/profile",
+        },
+      ],
+    },
+    {
+      id: 11,
+      name: "Media Library",
+      url: "/cms/media",
+      icon: "solar:album-broken",
+    },
+    {
+      id: 12,
+      name: "Pengaturan",
+      url: "/cms/settings",
+      icon: "solar:settings-broken",
+    },
+    {
+      id: 13,
+      name: "Newsletter",
+      url: "/cms/newsletter",
+      icon: "solar:mailbox-broken",
+      submenu: [
+        {
+          id: 14,
+          name: "Subscriber",
+          url: "/cms/newsletter/subscriber",
+        },
+        {
+          id: 15,
+          name: "Campaign",
+          url: "/cms/newsletter/campaign",
+        },
+      ],
+    },
+    {
+      id: 16,
+      name: "Toko",
+      url: "/admin/store",
+      icon: "solar:shop-broken",
+      submenu: [
+        {
+          id: 17,
+          name: "Boardgame",
+          url: "/cms/store/boardgame",
+        },
+        {
+          id: 18,
+          name: "Marketplace",
+          url: "/cms/store/marketplace",
+        },
+      ],
+    },
+    {
+      id: 19,
+      name: "Kelas",
+      url: "/cms/class",
+      icon: "solar:archive-broken",
+      submenu: [
+        {
+          id: 20,
+          name: "Kelas Parenting",
+          url: "/cms/class/boardgame",
+        },
+        {
+          id: 21,
+          name: "Video",
+          url: "/cms/class/marketplace",
+        },
+        {
+          id: 22,
+          name: "Podcast",
+          url: "/cms/class/marketplace",
+        },
+        {
+          id: 23,
+          name: "Konsultasi",
+          url: "/cms/class/marketplace",
+        },
+      ],
+    },
+    {
+      id: 13,
+      name: "Transaksi",
+      url: "/cms/transcation",
+      icon: "solar:user-broken",
+    },
+  ],
+});
 </script>

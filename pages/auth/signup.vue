@@ -1,13 +1,13 @@
 <template>
   <NuxtLayout name="auth">
-    <main>
+    <main class="">
       <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
 
         <!-- ====== Forms Section Start -->
         <div
           class="rounded-sm  shadow-default"
         >
-          <div class="grid grid-cols-2 items-center">
+          <div class="grid grid-cols-2 items-center w-full h-screen">
             <div class="w-full">
               <div class="py-17.5 px-26 text-center">
                 <NuxtLink to="/" class="mb-5.5 inline-block">
@@ -147,7 +147,7 @@
               </div>
             </div>
             <div
-              class="w-full py-5"
+              class="w-full py-5 h-full overflow-y-scroll"
             >
               <div class="w-full p-4 sm:px-12.5 xl:px-17.5">
                 <span class="mb-1.5 block font-medium pt-10">Register New Account</span>
