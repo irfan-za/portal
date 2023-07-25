@@ -6,9 +6,9 @@
   >
     <!-- SIDEBAR HEADER -->
     <div class="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5">
-      <a href="index.html">
+      <NuxtLink to="/cms">
         <nuxt-img src="/img/habitzkid-white.png" alt="Logo" class="w-48" />
-      </a>
+      </NuxtLink>
 
       <button
         class="block lg:hidden"
@@ -46,7 +46,7 @@
           <ul class="mb-6 flex flex-col gap-1.5">
             <!-- Menu Item Dashboard -->
             <li v-for="row in menu.adminMenu" :key="row.id">
-              <a
+              <NuxtLink
                 class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
                 href="#"
                 @click.prevent="
@@ -57,7 +57,7 @@
                     selected === row.name
                 }"
               >
-                <i :class="'i-' + row.icon " >icon</i>
+                <i :class="'i-' + row.icon " class="w-5 h-5" ></i>
 
                 {{ row.name }}
 
@@ -78,7 +78,7 @@
                     fill=""
                   />
                 </svg>
-              </a>
+              </NuxtLink>
 
               <!-- Dropdown Menu Start -->
               <div
@@ -101,12 +101,14 @@
             </li>
             <!-- Menu Item Dashboard -->
           </ul>
+
         </div>
       </nav>
       <!-- Sidebar Menu -->
-
     </div>
-  </aside>
+    <!-- solve bug icon -->
+   
+  </aside>  
 </template>
 
 

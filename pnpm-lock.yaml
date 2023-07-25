@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   '@pinia/nuxt':
     specifier: ^0.4.11
@@ -9,6 +13,9 @@ dependencies:
     version: 2.1.4(vue@3.3.4)
 
 devDependencies:
+  '@iconify/json':
+    specifier: ^2.2.94
+    version: 2.2.94
   '@nuxt/devtools':
     specifier: latest
     version: 0.7.1(nuxt@3.6.5)(vite@4.4.5)
@@ -766,6 +773,13 @@ packages:
     resolution: {integrity: sha512-foQZKJig7Ob0BMAYBfcJk8d77QtOe7Wo4ox7ff1lQYoNNAb6jwcY1ncdoy2e9wQZzvNy7ODZCYJkK8kzmcAnAg==}
     dependencies:
       '@hapi/hoek': 9.3.0
+    dev: true
+
+  /@iconify/json@2.2.94:
+    resolution: {integrity: sha512-7O+2Dp9h7MI+5dfKxwS/5a4yXgrTBixX8Oy+4QtwMA2EXAJSqBuRYesD8GH3EvcwYHclRjkNM8lgG0TQ24C9eg==}
+    dependencies:
+      '@iconify/types': 2.0.0
+      pathe: 1.1.1
     dev: true
 
   /@iconify/types@2.0.0:
@@ -7506,7 +7520,3 @@ packages:
       compress-commons: 4.1.1
       readable-stream: 3.6.2
     dev: true
-
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
