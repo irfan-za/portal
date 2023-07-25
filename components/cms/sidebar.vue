@@ -48,7 +48,7 @@
             <li v-for="row in menu.adminMenu" :key="row.id">
               <NuxtLink
                 class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
-                :to="row.url"
+                :to=" row.submenu ? '#' : row.url"
                 @click.prevent="
                   selected = selected === row.name ? '' : row.name
                 "

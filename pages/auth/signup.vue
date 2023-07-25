@@ -143,13 +143,12 @@
             <h2 class="mb-9 text-2xl font-bold sm:text-title-xl2">
               Sign Up to Parenting Habitz
             </h2>
-
-            <form>
               <div class="mb-4">
                 <label class="mb-2.5 block font-medium">Name</label>
                 <div class="relative">
                   <input
                     type="text"
+                    v-model="name"
                     placeholder="Enter your full name"
                     class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
                   />
@@ -183,6 +182,7 @@
                 <div class="relative">
                   <input
                     type="email"
+                    v-model="email"
                     placeholder="Enter your email"
                     class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
                   />
@@ -212,6 +212,7 @@
                 <div class="relative">
                   <input
                     type="password"
+                    v-model="password"
                     placeholder="Enter your password"
                     class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
                   />
@@ -245,6 +246,7 @@
                 <div class="relative">
                   <input
                     type="password"
+                    v-model="passwordRepeat"
                     placeholder="Re-enter your password"
                     class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
                   />
@@ -274,11 +276,12 @@
               </div>
 
               <div class="mb-5">
-                <input
-                  type="submit"
-                  value="Create account"
+                <button
+                  @click="register()"
                   class="w-full cursor-pointer rounded-lg border border-primary bg-primary p-4 font-medium text-white transition hover:bg-opacity-90"
-                />
+                >
+                  Create account
+                </button>
               </div>
 
               <button
@@ -328,7 +331,6 @@
                   >
                 </p>
               </div>
-            </form>
           </div>
         </div>
       </div>
@@ -336,3 +338,61 @@
     <!-- ====== Forms Section End -->
   </NuxtLayout>
 </template>
+
+<script setup>
+const auth = useAuth();
+
+const user = useSupabaseUser();
+const client = useSupabaseAuthClient();
+const router = useRouter();
+// const name = ref('');
+
+let name = computed({
+  set(value) {
+    auth.changeState("name", value);
+  },
+  get() {
+    return auth.getState.name;
+  },
+});
+
+let email = computed({
+  set(value) {
+    auth.changeState("email", value);
+  },
+  get() {
+    return auth.getState.email;
+  },
+});
+
+let password = computed({
+  set(value) {
+    auth.changeState("password", value);
+  },
+  get() {
+    return auth.getState.password;
+  },
+});
+
+let passwordRepeat = computed({
+  set(value) {
+    auth.changeState("passwordRepeat", value);
+  },
+  get() {
+    return auth.getState.passwordRepeat;
+  },
+});
+
+async function register() {
+  const { data, error } = await client.auth.signUp({
+    email: email.value,
+    password: password.value,
+    options: {
+      data: {
+        name: name.value,
+      },
+    },
+  });
+  console.log(data);
+}
+</script>
