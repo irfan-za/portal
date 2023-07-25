@@ -84,17 +84,17 @@
           <li>
             <!-- Dark Mode Toggler -->
             <label
-              :class="darkMode ? 'bg-primary' : 'bg-slate-300'"
+              :class="navbar.getDarkMode ? 'bg-primary' : 'bg-slate-300'"
               class="relative m-0 block h-7.5 w-14 rounded-full"
             >
               <input
                 type="checkbox"
-                :value="darkMode"
-                @change="darkMode = !darkMode"
+                :value="navbar.getDarkMode"
+                @change="navbar.setDarkMode(!navbar.getDarkMode)"
                 class="absolute top-0 z-50 m-0 h-full w-full cursor-pointer opacity-0"
               />
               <span
-                :class="darkMode && '!right-[3px] !translate-x-full'"
+                :class="navbar.getDarkMode && '!right-[3px] !translate-x-full'"
                 class="absolute top-1/2 left-[3px] flex h-6 w-6 -translate-y-1/2 translate-x-0 items-center justify-center rounded-full bg-white shadow-switcher duration-75 ease-linear"
               >
                 <span class="dark:hidden">
@@ -135,17 +135,14 @@
           </li>
 
           <!-- Notification Menu Area -->
-          <li
-            class="relative"
-            v-if="dropdownOpen == false && notifying == true"
-            @click="dropdownOpen = false"
-          >
+          <li class="relative">
             <a
-              class="relative flex h-8.5 w-8.5 items-center justify-center rounded-full border-[0.5px] border-slate-300 bg-gray hover:text-primary dark:border-dark dark:bg-meta-4 dark:text-white"
+              class="relative flex h-8.5 w-8.5 items-center justify-center rounded-full border-[0.5px] border-slate-300 bg-slate-100 hover:text-primary dark:border-dark dark:bg-meta-4 dark:text-white"
               href="#"
               @click.prevent="
-                dropdownOpen = !dropdownOpen;
-                notifying = false;
+                messages = false;
+                dropdownOpen = false;
+                notifying = !notifying;
               "
             >
               <span
@@ -174,7 +171,7 @@
 
             <!-- Dropdown Start -->
             <div
-              v-show="dropdownOpen"
+              v-show="notifying"
               class="absolute -right-27 mt-2.5 flex h-90 w-75 flex-col rounded-sm border border-slate-300 bg-white shadow-default dark:border-dark dark:bg-dark sm:right-0 sm:w-80"
             >
               <div class="px-4.5 py-3">
@@ -252,21 +249,18 @@
           <!-- Notification Menu Area -->
 
           <!-- Chat Notification Area -->
-          <li
-            class="relative"
-            v-if="dropdownOpen == false && notifying == true "
-            @click="dropdownOpen = false"
-          >
+          <li class="relative">
             <a
-              class="relative flex h-8.5 w-8.5 items-center justify-center rounded-full border-[0.5px] border-slate-300 bg-gray hover:text-primary dark:border-dark dark:bg-meta-4 dark:text-white"
+              class="relative flex h-8.5 w-8.5 items-center justify-center rounded-full border-[0.5px] border-slate-300 bg-slate-100 hover:text-primary dark:border-dark dark:bg-meta-4 dark:text-white"
               href="#"
               @click.prevent="
-                dropdownOpen = !dropdownOpen;
+                messages = !messages;
+                dropdownOpen = false;
                 notifying = false;
               "
             >
               <span
-                :class="!notifying && 'hidden'"
+                :class="!messages && 'hidden'"
                 class="absolute -top-0.5 -right-0.5 z-1 h-2 w-2 rounded-full bg-meta-1"
               >
                 <span
@@ -303,7 +297,7 @@
 
             <!-- Dropdown Start -->
             <div
-              v-show="dropdownOpen"
+              v-show="messages"
               class="absolute -right-16 mt-2.5 flex h-90 w-75 flex-col rounded-sm border border-slate-300 bg-white shadow-default dark:border-dark dark:bg-dark sm:right-0 sm:w-80"
             >
               <div class="px-4.5 py-3">
@@ -419,18 +413,18 @@
         </ul>
 
         <!-- User Area -->
-        <div
-          class="relative"
-          v-if="dropdownOpen == false"
-          @click="dropdownOpen = false"
-        >
+        <div class="relative">
           <a
             class="flex items-center gap-4"
             href="#"
-            @click.prevent="dropdownOpen = !dropdownOpen"
+            @click.prevent="
+              messages = false;
+              dropdownOpen = !dropdownOpen;
+              notifying = false;
+            "
           >
             <span class="hidden text-right lg:block">
-              <span class="block text-sm font-medium text-black dark:text-white"
+              <span class="block text-sm font-medium text-dark"
                 >Thomas Anree</span
               >
               <span class="block text-xs font-medium">UX Designer</span>
@@ -461,7 +455,7 @@
           <!-- Dropdown Start -->
           <div
             v-show="dropdownOpen"
-            class="absolute right-0 mt-4 flex w-62.5 flex-col rounded-sm border border-slate-300 bg-white shadow-default dark:border-dark dark:bg-dark"
+            class="absolute right-0 mt-4 flex w-62.5 flex-col rounded-sm border border-slate-300 bg-white shadow"
           >
             <ul
               class="flex flex-col gap-5 border-b border-slate-300 px-6 py-7.5 dark:border-dark"
@@ -469,7 +463,7 @@
               <li>
                 <a
                   href="profile.html"
-                  class="flex items-center gap-3.5 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base"
+                  class="flex items-center gap-3.5 text-sm font-medium duration-300 ease-in-out text-dark hover:text-primary"
                 >
                   <svg
                     class="fill-current"
@@ -494,7 +488,7 @@
               <li>
                 <a
                   href="#"
-                  class="flex items-center gap-3.5 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base"
+                  class="flex items-center gap-3.5 text-sm font-medium duration-300 ease-in-out hover:text-primary"
                 >
                   <svg
                     class="fill-current"
@@ -515,7 +509,7 @@
               <li>
                 <a
                   href="settings.html"
-                  class="flex items-center gap-3.5 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base"
+                  class="flex items-center gap-3.5 text-sm font-medium duration-300 ease-in-out hover:text-primary"
                 >
                   <svg
                     class="fill-current"
@@ -539,7 +533,7 @@
               </li>
             </ul>
             <button
-              class="flex items-center gap-3.5 py-4 px-6 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base"
+              class="flex items-center gap-3.5 py-4 px-6 text-sm font-medium duration-300 ease-in-out hover:text-primary"
             >
               <svg
                 class="fill-current"
@@ -570,10 +564,8 @@
 </template>
 
 <script setup>
-const dropdownOpen = ref(false)
-const notifying = ref(false)
-const sidebarToggle = ref(false)
-const darkMode = ref(false)
+const dropdownOpen = ref(false);
+const notifying = ref(false);
+const messages = ref(false);
 const navbar = useNavbar();
-
 </script>

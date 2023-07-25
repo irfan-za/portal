@@ -34,7 +34,7 @@ export default defineConfig({
       graydark: "rgb(51, 58, 72)",
     },
   },
-  safelist: ['i-solar:home-2-broken','i-solar:inbox-archive-broken','i-solar:dialog-2-broken','i-solar:users-group-two-rounded-broken','i-solar:album-broken','i-solar:settings-broken','i-solar:mailbox-broken','i-solar:shop-broken','i-solar:archive-broken','i-solar:user-broken'],
+  safelist: ['i-solar:home-2-linear','i-solar:inbox-archive-linear','i-solar:dialog-2-linear','i-solar:users-group-two-rounded-linear','i-solar:album-linear','i-solar:settings-linear','i-solar:mailbox-linear','i-solar:shop-linear','i-solar:archive-linear','i-solar:user-linear'],
   presets: [
     presetUno(),
     presetAttributify(),

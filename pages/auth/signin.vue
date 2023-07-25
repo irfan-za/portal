@@ -5,7 +5,7 @@
         <div class="w-full ">
           <div class="py-17.5 px-26 text-center">
             <NuxtLink to="/" class="mb-5.5 inline-block">
-              <nuxt-img src="/img/logo.png" alt="Logo"  class="w-60"/>
+              <nuxt-img src="/img/habitzkid.png" alt="Logo"  class="w-60"/>
             </NuxtLink>
 
             <p class="font-medium 2xl:px-20">

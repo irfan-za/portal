@@ -48,7 +48,7 @@
             <li v-for="row in menu.adminMenu" :key="row.id">
               <NuxtLink
                 class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
-                href="#"
+                :to="row.url"
                 @click.prevent="
                   selected = selected === row.name ? '' : row.name
                 "
@@ -122,13 +122,13 @@ const menu = ref({
       id: 1,
       name: "Dashboard",
       url: "/cms",
-      icon: "solar:home-2-broken",
+      icon: "solar:home-2-linear",
     },
     {
       id: 2,
       name: "Artikel",
       url: "/cms/articles",
-      icon: "solar:inbox-archive-broken",
+      icon: "solar:inbox-archive-linear",
       submenu: [
         {
           id: 3,
@@ -151,13 +151,13 @@ const menu = ref({
       id: 6,
       name: "Komentar",
       url: "/cms/comments",
-      icon: "solar:dialog-2-broken",
+      icon: "solar:dialog-2-linear",
     },
     {
       id: 7,
       name: "Pengguna",
       url: "/cms/users",
-      icon: "solar:users-group-two-rounded-broken",
+      icon: "solar:users-group-two-rounded-linear",
       submenu: [
         {
           id: 8,
@@ -180,19 +180,19 @@ const menu = ref({
       id: 11,
       name: "Media Library",
       url: "/cms/media",
-      icon: "solar:album-broken",
+      icon: "solar:album-linear",
     },
     {
       id: 12,
       name: "Pengaturan",
       url: "/cms/settings",
-      icon: "solar:settings-broken",
+      icon: "solar:settings-linear",
     },
     {
       id: 13,
       name: "Newsletter",
       url: "/cms/newsletter",
-      icon: "solar:mailbox-broken",
+      icon: "solar:mailbox-linear",
       submenu: [
         {
           id: 14,
@@ -210,7 +210,7 @@ const menu = ref({
       id: 16,
       name: "Toko",
       url: "/admin/store",
-      icon: "solar:shop-broken",
+      icon: "solar:shop-linear",
       submenu: [
         {
           id: 17,
@@ -228,7 +228,7 @@ const menu = ref({
       id: 19,
       name: "Kelas",
       url: "/cms/class",
-      icon: "solar:archive-broken",
+      icon: "solar:archive-linear",
       submenu: [
         {
           id: 20,
@@ -256,7 +256,7 @@ const menu = ref({
       id: 13,
       name: "Transaksi",
       url: "/cms/transcation",
-      icon: "solar:user-broken",
+      icon: "solar:user-linear",
       submenu: [
         {
           id: 20,
