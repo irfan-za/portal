@@ -147,9 +147,10 @@
                 <div class="relative">
                   <input
                     type="email"
-                    v-model="email"
+                    v-model="emailVal"
                     placeholder="Enter your email"
-                    autocomplete="email"
+                    name="email"
+                    autocomplete="on"
                     class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
                   />
 
@@ -171,6 +172,7 @@
                     </svg>
                   </span>
                 </div>
+                <span v-if="validate.emailVal.$error" class="text-red-600">Format email salah / belum diisi</span>
               </div>
 
               <div class="mb-6">
@@ -182,7 +184,6 @@
                     placeholder="6+ Characters, 1 Capital letter"
                     class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
                   />
-
                   <span class="absolute right-4 top-4">
                     <svg
                       class="fill-current"
@@ -205,6 +206,7 @@
                     </svg>
                   </span>
                 </div>
+                <span v-if="validate.password.$error" class="text-red-600">Password kurang dari 6 huruf</span>
               </div>
 
               <div class="mb-5">
@@ -267,25 +269,65 @@
 </template>
 
 <script setup>
-const email = ref();
-const password = ref();
+import { useVuelidate } from "@vuelidate/core";
+import { required, email, minLength } from "@vuelidate/validators";
+
 
 const client = useSupabaseAuthClient();
 const user = useSupabaseUser();
+const auth = useAuth();
+
+
+let emailVal = computed({
+  set(value) {
+    auth.changeState("email", value);
+  },
+  get() {
+    return auth.getState.email;
+  },
+});
+
+let password = computed({
+  set(value) {
+    auth.changeState("password", value);
+  },
+  get() {
+    return auth.getState.password;
+  },
+});
+
+
+const rules = computed(() => {
+  return {
+    emailVal: {
+      required,
+      email,
+    },
+    password: {
+      required,
+      minLengthValue: minLength(6),
+    },
+  };
+});
+const validate = useVuelidate(rules, {
+  emailVal,
+  password,
+});
+
 
 async function signin() {
+  validate.value.$touch();
+  if (validate.value.$invalid) return;
+
   const { data, error } = await client.auth.signInWithPassword({
-      email: email.value,
+      email: emailVal.value,
       password: password.value,
     });
-    console.log('data👉',data);
-    if (error) {
-      alert(error.message)
-    } else {
+    if(!error) {
       navigateTo("/cms")
     }
+
   }
-  console.log('user 👉',user);
   
 watchEffect(async () => {
   if (user.value) {
