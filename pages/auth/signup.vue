@@ -183,7 +183,9 @@
               <div class="relative">
                 <input
                   type="email"
-                  v-model="emailVal"                  
+                  v-model="emailVal"        
+                  autocomplete="on"   
+                  name="email"      
                   placeholder="Enter your email"
                   class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
                 />
@@ -429,8 +431,13 @@ const validate = useVuelidate(rules, {
 async function register() {
   validate.value.$touch();
   if (validate.value.$invalid) return;
+  const { data:usersTable, error:usersTableError } = await supabase.from('users').select().eq('email', emailVal.value).single()
+  if(usersTable){
+    alert("email sudah digunakan, coba login atau gunakan email lainnya!")
+    return;
+  }
 
-  const { data, error } = await client.auth.signUp({
+  const { data:newUser, error } = await client.auth.signUp({
     email: emailVal.value,
     password: password.value,
     options: {
@@ -439,16 +446,15 @@ async function register() {
       },
     },
   });
-  console.log(data);
   if (error) {
     alert(error.message);
   }
-  if (data) {
+  if (newUser.user) {
+    console.log(newUser);
     const { data, error } = await supabase
         .from("users")
         .insert({ name: name.value, email: emailVal.value })
         .select();
-        console.log('data from table 👉', data);
         if(error) {alert(error.message);}
   }
 }

@@ -323,7 +323,10 @@ async function signin() {
       email: emailVal.value,
       password: password.value,
     });
-    if(!error) {
+    if(error) {
+      alert(error.message);
+    }
+    else{
       navigateTo("/cms")
     }
 
